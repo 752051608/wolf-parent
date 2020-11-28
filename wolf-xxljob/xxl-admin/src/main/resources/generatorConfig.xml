@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <context id="MyBatis" targetRuntime="MyBatis3"  defaultModelType="flat">
+        <!--覆盖生成XML文件-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+        <!-- 不生成注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://47.98.164.133/scheduler-job" userId="root" password="Tfbtech123@">
+        </jdbcConnection>
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+        <!--实体类entity存放-->
+        <javaModelGenerator targetPackage="com.scheduler.job.admin.core.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--mapper.xml存放-->
+        <sqlMapGenerator targetPackage="mybatis-mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--mapper.java存放-->
+        <javaClientGenerator targetPackage="com.scheduler.job.admin.dao" type="XMLMAPPER"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--方式一: 表结构及表映射生成 不携带example相关类-->
+        <!--公司代理顾客绑定表-->
+        <!--<table tableName="wxpublic_info" domainObjectName="WxpublicInfoDO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+
+        <!--方式二: 表结构及表映射生成 携带example相关类-->
+        <table tableName="alipay_info_test" domainObjectName="AlipayInfoTestDo">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+    </context>
+
+</generatorConfiguration>
